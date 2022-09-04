@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_students_teacher,students.teacher,model_students_teacher,copilot_test.copilot,1,1,1,0
+access_students_student,students.student,model_students_student,copilot_test.copilot,1,1,1,0
+access_students_subject,students.subject,model_students_subject,copilot_test.copilot,1,1,1,0
+access_students_class,students.class,model_students_class,copilot_test.copilot,1,1,1,0

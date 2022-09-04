@@ -1,0 +1,175 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="copilot_test.teachers_tree">
+      <field name="name">teachers tree</field>
+      <field name="model">students.teacher</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="classes"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.teachers_form">
+      <field name="name">teachers form</field>
+      <field name="model">students.teacher</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="classes"/>
+            <field name="national_id"/>
+            <field name="subject_taught" widget="many2many_tags"/>
+          </group>
+        </form>
+        
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.student_tree">
+      <field name="name">student tree</field>
+      <field name="model">students.student</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="student_class"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.student_form">
+      <field name="name">student form</field>
+      <field name="model">students.student</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="contact_user"/>
+            <field name="national_id"/>
+            <field name="student_class"/>
+            <field name="dob"/>
+            <field name="age"/>
+          </group>
+        </form>
+        
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.class_tree">
+      <field name="name">class tree</field>
+      <field name="model">students.class</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="level"/>
+          <field name="subjects" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.class_form">
+      <field name="name">class form</field>
+      <field name="model">students.class</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+          <field name="level"/>
+          <field name="subjects" widget="many2many_tags"/>
+          </group>
+        </form>
+        
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.subject_tree">
+      <field name="name">subject tree</field>
+      <field name="model">students.subject</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="copilot_test.subject_form">
+      <field name="name">subject form</field>
+      <field name="model">students.subject</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+          </group>
+        </form>
+        
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="copilot_test.action_window">
+      <field name="name">teachers</field>
+      <field name="res_model">students.teacher</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="copilot_test.action_window1">
+      <field name="name">studets</field>
+      <field name="res_model">students.student</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="copilot_test.action_window2">
+      <field name="name">classes</field>
+      <field name="res_model">students.class</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="copilot_test.action_window3">
+      <field name="name">subjects</field>
+      <field name="res_model">students.subject</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="copilot_test.action_server">
+      <field name="name">copilot_test server</field>
+      <field name="model_id" ref="model_copilot_test_copilot_test"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<menuitem name="Copliot" id="copilot_test.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Users" id="copilot_test.menu_1" parent="copilot_test.menu_root"/>
+<!--
+    
+    <menuitem name="Menu 2" id="copilot_test.menu_2" parent="copilot_test.menu_root"/>
+-->
+    <!-- actions -->
+    <menuitem name="Teachers" id="copilot_test.menu_1_list" parent="copilot_test.menu_1"
+              action="copilot_test.action_window"/>
+    <menuitem name="Students" id="copilot_test.menu_2_list" parent="copilot_test.menu_1"
+    action="copilot_test.action_window1"/>
+    <menuitem name="Classes" id="copilot_test.menu_3_list" parent="copilot_test.menu_1"
+    action="copilot_test.action_window2"/>
+    <menuitem name="Subjects" id="copilot_test.menu_4_list" parent="copilot_test.menu_1"
+    action="copilot_test.action_window3"/>
+
+<!--
+    <menuitem name="List" id="copilot_test.menu_1_list" parent="copilot_test.menu_1"
+              action="copilot_test.action_window"/>
+    <menuitem name="Server to list" id="copilot_test" parent="copilot_test.menu_2"
+              action="copilot_test.action_server"/>
+-->
+  </data>
+</odoo>
